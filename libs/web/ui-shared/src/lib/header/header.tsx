@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 /* eslint-disable-next-line */
-export interface HeaderProps {}
+export interface HeaderProps {
+  title: string;
+}
 
 const StyledHeader = styled.div`
   color: pink;
@@ -10,7 +12,7 @@ const StyledHeader = styled.div`
 export function Header(props: HeaderProps) {
   return (
     <StyledHeader>
-      <h1>Welcome to Header!</h1>
+      <h1>{props.title}</h1>
     </StyledHeader>
   );
 }
