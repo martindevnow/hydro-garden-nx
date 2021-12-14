@@ -18,6 +18,9 @@
       "@hydro-garden-monorepo/utils/formatters": [
         "libs/utils/formatters/src/index.ts"
       ],
+      "@hydro-garden-monorepo/web/feature-device-detail": [
+        "libs/web/feature-device-detail/src/index.ts"
+      ],
       "@hydro-garden-monorepo/web/ui-shared": [
         "libs/web/ui-shared/src/index.ts"
       ]

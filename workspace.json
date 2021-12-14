@@ -1,9 +1,11 @@
 {
   "version": 2,
   "projects": {
+    "api": "apps/api",
     "device-admin": "apps/device-admin",
     "device-admin-e2e": "apps/device-admin-e2e",
     "utils-formatters": "libs/utils/formatters",
+    "web-feature-device-detail": "libs/web/feature-device-detail",
     "web-ui-shared": "libs/web/ui-shared"
   }
 }

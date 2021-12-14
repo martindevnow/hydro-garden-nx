@@ -43,7 +43,8 @@
       "executor": "@nrwl/web:dev-server",
       "options": {
         "buildTarget": "device-admin:build",
-        "hmr": true
+        "hmr": true,
+        "proxyConfig": "apps/device-admin/proxy.conf.json"
       },
       "configurations": {
         "production": {
@@ -65,6 +66,19 @@
       "options": {
         "jestConfig": "apps/device-admin/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "full": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "nx run api:serve"
+          },
+          {
+            "command": "nx run device-admin:serve"
+          }
+        ]
       }
     }
   },

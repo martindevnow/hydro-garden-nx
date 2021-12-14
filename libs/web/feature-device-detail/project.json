@@ -1,0 +1,25 @@
+{
+  "root": "libs/web/feature-device-detail",
+  "sourceRoot": "libs/web/feature-device-detail/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/feature-device-detail/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/feature-device-detail"],
+      "options": {
+        "jestConfig": "libs/web/feature-device-detail/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
