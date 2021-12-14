@@ -1,4 +1,9 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "device-admin": "apps/device-admin",
+    "device-admin-e2e": "apps/device-admin-e2e",
+    "utils-formatters": "libs/utils/formatters",
+    "web-ui-shared": "libs/web/ui-shared"
+  }
 }

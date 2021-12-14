@@ -1,0 +1,72 @@
+{
+  "root": "apps/device-admin",
+  "sourceRoot": "apps/device-admin/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/device-admin",
+        "index": "apps/device-admin/src/index.html",
+        "baseHref": "/",
+        "main": "apps/device-admin/src/main.tsx",
+        "polyfills": "apps/device-admin/src/polyfills.ts",
+        "tsConfig": "apps/device-admin/tsconfig.app.json",
+        "assets": [
+          "apps/device-admin/src/favicon.ico",
+          "apps/device-admin/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/device-admin/src/environments/environment.ts",
+              "with": "apps/device-admin/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "device-admin:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "device-admin:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/device-admin/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/device-admin"],
+      "options": {
+        "jestConfig": "apps/device-admin/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

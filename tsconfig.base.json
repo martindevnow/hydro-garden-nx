@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@hydro-garden-monorepo/utils/formatters": [
+        "libs/utils/formatters/src/index.ts"
+      ],
+      "@hydro-garden-monorepo/web/ui-shared": [
+        "libs/web/ui-shared/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
