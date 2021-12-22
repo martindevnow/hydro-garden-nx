@@ -7,8 +7,11 @@ import {
 } from './firestore.providers';
 
 type FirestoreModuleOptions = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   imports: any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useFactory: (...args: any[]) => Settings;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   inject: any[];
 };
 
