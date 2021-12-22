@@ -3,7 +3,7 @@ import { Header } from '@hydro-garden-monorepo/web/ui-shared';
 import { RoomDocument } from '@hydro-garden-monorepo/utils/interfaces';
 
 import React from 'react';
-import { collection, getDocs } from '@firebase/firestore/dist/lite';
+import { collection, getDocs } from '@firebase/firestore/lite';
 import { db } from '../firebase/firebase.config';
 
 const StyledApp = styled.div`
