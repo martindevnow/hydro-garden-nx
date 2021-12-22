@@ -1,30 +1,34 @@
 import styled from 'styled-components';
 import { Header } from '@hydro-garden-monorepo/web/ui-shared';
-import { utilsFormatters } from '@hydro-garden-monorepo/utils/formatters';
+import { RoomDocument } from '@hydro-garden-monorepo/utils/interfaces';
 
-import { Route, Link } from 'react-router-dom';
-
-import { WebFeatureDeviceDetail } from '@hydro-garden-monorepo/web/feature-device-detail';
 import React from 'react';
+import { collection, getDocs } from '@firebase/firestore/dist/lite';
+import { db } from '../firebase/firebase.config';
 
 const StyledApp = styled.div`
   // Your style here
 `;
 
 export function App() {
-  const [message, setMessage] = React.useState(null);
+  const [rooms, setRooms] = React.useState<RoomDocument[]>([]);
   React.useEffect(() => {
-    // do nothing
-    fetch('/api', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const getRooms = async () => {
+      const roomsCol = collection(db, 'rooms');
+      const roomsSnapshot = await getDocs(roomsCol);
+      const roomsList = roomsSnapshot.docs.map(
+        (doc) => doc.data() as RoomDocument
+      );
+      setRooms(roomsList);
+    };
+    getRooms();
   }, []);
   return (
     <StyledApp>
       <Header title="Welcome" />
-      <p>{utilsFormatters()}</p>
+      {rooms.map((room) => (
+        <h1 key={room.name}>{room.name}</h1>
+      ))}
       <div>Hello 🙂</div>
     </StyledApp>
   );
