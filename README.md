@@ -1,6 +1,18 @@
-
-
 # HydroGardenMonorepo
+
+This project manages the monorepo for the HydroGarden API and device management platforms.
+
+## Applications
+
+- `api` - This is the NestJS-based middleware/API that IoT devices talk to, and can relay information back to the IoT devices, allowing for the device management portals to configure these devices.
+
+> The API is built into a Docker container
+
+- `device-admin` - This is a React-based frontend portal which is secured with Firebase auth, connected to the API to allow for easy configuration of the IoT devices.
+
+> The device admin is a SPA, non-serverside rendered nor statically rendered, hosted on Firebase Hosting.
+
+# Default README
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -78,8 +90,6 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
 
 ## ☁ Nx Cloud
 
