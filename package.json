@@ -5,11 +5,12 @@
   "scripts": {
     "start": "nx run device-admin:serve",
     "build": "nx build",
-    "test": "nx test",
+    "test": "nx run-many --all --target=test",
     "run:api": "docker run -p 3334:3334 martindevnow/hydro-garden-api"
   },
   "private": true,
   "dependencies": {
+    "@google-cloud/firestore": "^5.0.1",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^1.1.5",
     "@nestjs/core": "^8.0.0",
