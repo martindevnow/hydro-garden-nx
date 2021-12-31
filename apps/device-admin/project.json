@@ -3,6 +3,16 @@
   "sourceRoot": "apps/device-admin/src",
   "projectType": "application",
   "targets": {
+    "deploy": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "nx build device-admin",
+          "docker build -f ./apps/device-admin/Dockerfile -t martindevnow/hydro-garden-admin ."
+        ],
+        "parallel": false
+      }
+    },
     "build": {
       "executor": "@nrwl/web:webpack",
       "outputs": ["{options.outputPath}"],
