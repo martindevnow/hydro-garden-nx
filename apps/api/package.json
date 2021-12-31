@@ -1,0 +1,14 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "dependencies": {
+    "@google-cloud/firestore": "^5.0.1",
+    "@nestjs/common": "^8.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.0.0",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/config": "^1.1.5"
+  },
+  "main": "main.js"
+}

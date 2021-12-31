@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+    image: martindevnow/hydro-garden-api:latest
+    ports:
+      - '3334:3334'
+    environment:
+      - SA_KEY=hydro-api-firebase-service-key.json
+    volumes:
+      - ${PWD}/hydro-garden-68dc5-firebase-adminsdk-llaa5-91c6a50358.json:/app/hydro-api-firebase-service-key.json:ro

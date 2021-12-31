@@ -6,7 +6,9 @@
     "start": "nx run device-admin:serve",
     "build": "nx build",
     "test": "nx run-many --all --target=test",
-    "run:api": "docker run -p 3334:3334 martindevnow/hydro-garden-api"
+    "run:api": "docker run -p 3334:3334 martindevnow/hydro-garden-api",
+    "isAffected:device-admin": "nx affected:apps --base=main~1 --head=main --plain --exclude=api",
+    "isAffected:device-admin2": "nx print-affected --base=main~1 --head=main --target=build --select=projects --exclude=api"
   },
   "private": true,
   "dependencies": {
