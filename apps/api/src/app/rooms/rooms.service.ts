@@ -1,5 +1,5 @@
 import { Injectable, Inject, Logger } from '@nestjs/common';
-import { CollectionReference } from '@google-cloud/firestore';
+import { CollectionReference, WriteResult } from '@google-cloud/firestore';
 import { RoomDocument } from '@hydro-garden-monorepo/utils/interfaces';
 
 @Injectable()
@@ -16,9 +16,9 @@ export class RoomsService {
     await docRef.set({
       name,
     });
-    const todoDoc = await docRef.get();
-    const todo = todoDoc.data();
-    return todo;
+    const roomDoc = await docRef.get();
+    const room = roomDoc.data();
+    return room;
   }
 
   async findAll(): Promise<RoomDocument[]> {
@@ -26,5 +26,17 @@ export class RoomsService {
     const rooms: RoomDocument[] = [];
     snapshot.forEach((doc) => rooms.push(doc.data()));
     return rooms;
+  }
+
+  async read(id: string): Promise<RoomDocument> {
+    const docRef = this.roomsCollection.doc(id);
+    const roomDoc = await docRef.get();
+    const room = roomDoc.data();
+    return room;
+  }
+
+  async delete(id: string): Promise<WriteResult> {
+    const docRef = this.roomsCollection.doc(id);
+    return docRef.delete();
   }
 }
