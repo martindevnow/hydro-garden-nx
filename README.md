@@ -110,3 +110,13 @@ Check for port on Windows:
 ```powershell
 Get-Process -Id (Get-NetTCPConnection -LocalPort 3334).OwningProcess
 ```
+
+- [Nx + Nest + Firebase = The dream](https://itnext.io/nx-nest-firebase-the-dream-616e8ee71920)
+- [Scale React Development with Nx](https://egghead.io/courses/scale-react-development-with-nx-4038)
+- [Intro to Nx](https://nx.dev/l/r/getting-started/intro)
+- [Nest CLI](https://docs.nestjs.com/cli/usages)
+- [Setting Up A Docker Container for Nx Workspace Application](https://calebmcelrath.com/setting-up-a-docker-container-for-nx-workspace-application/)
+- [Nx and Node Microservices](https://blog.nrwl.io/nx-and-node-microservices-b6df3cd1bad6)
+- [Create Monorepo Flutter Apps Using Nx Workspaces](https://developer.school/tutorials/create-flutter-apps-using-nx-workspaces)
+- [Configuring CI Using GitHub Actions and Nx](https://nx.dev/l/n/ci/monorepo-ci-github-actions)
+- [Egghead.io Course on Nx](https://egghead.io/lessons/javascript-update-your-nx-workspace-with-nx-migrations)
