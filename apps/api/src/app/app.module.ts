@@ -5,9 +5,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RoomsModule } from './rooms/rooms.module';
 import { FirestoreModule } from './firestore/firestore.module';
+import { DevicesModule } from './devices/devices.module';
 
 @Module({
   imports: [
+    DevicesModule,
     RoomsModule,
     ConfigModule.forRoot({
       isGlobal: true,
