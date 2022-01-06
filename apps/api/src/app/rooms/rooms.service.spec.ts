@@ -26,6 +26,6 @@ describe('RoomsService', () => {
   });
 
   it('should return empty', async () => {
-    expect(await service.findAll()).toMatchObject([] as unknown as any);
+    expect(await service.findAll()).toMatchObject([]);
   });
 });
