@@ -12,10 +12,10 @@ services:
       - SA_KEY=hydro-api-firebase-service-key.json
     volumes:
       - ./hydro-garden-68dc5-firebase-adminsdk-llaa5-91c6a50358.json:/app/hydro-api-firebase-service-key.json:ro
-  admin:
-    build:
-      context: .
-      dockerfile: ./apps/device-admin/Dockerfile
-    image: martindevnow/hydro-garden-admin:latest
-    ports:
-      - '3333:80'
+  # admin:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/device-admin/Dockerfile
+  #   image: martindevnow/hydro-garden-admin:latest
+  #   ports:
+  #     - '3333:80'
