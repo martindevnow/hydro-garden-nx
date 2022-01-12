@@ -12,7 +12,9 @@ const StyledApp = styled.div`
 
 export function App() {
   const [rooms, setRooms] = React.useState<RoomDocument[]>([]);
+
   React.useEffect(() => {
+    // Talk to Firebase to get data
     const getRooms = async () => {
       const roomsCol = collection(db, 'rooms');
       const roomsSnapshot = await getDocs(roomsCol);
@@ -23,13 +25,23 @@ export function App() {
     };
     getRooms();
   }, []);
+
+  // React.useEffect(() => {
+  //   // Talk to API to get data
+  //   const getRooms = async () => {
+  //     const res = await fetch('http://localhost:3334/rooms');
+  //     const roomsList = await res.json();
+  //     setRooms(roomsList);
+  //   };
+  //   getRooms();
+  // }, []);
+
   return (
     <StyledApp>
-      <Header title="Welcome" />
+      <Header title="Rooms" />
       {rooms.map((room) => (
-        <h1 key={room.name}>{room.name}</h1>
+        <button key={room.name}>{room.name}</button>
       ))}
-      <div>Hello 🙂</div>
     </StyledApp>
   );
 }
