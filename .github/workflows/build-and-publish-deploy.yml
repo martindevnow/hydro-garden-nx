@@ -1,3 +1,13 @@
+# Resources - GitHub Actions
+# https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+# https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions
+# https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
+# https://docs.github.com/en/actions/learn-github-actions/expressions
+# Resources - Nx and CI
+# https://nx.dev/ci/monorepo-ci-github-actions
+# Resources - Docker Hub and CI
+# https://docs.docker.com/ci-cd/github-actions/
+
 name: Build and Publish
 
 on:
