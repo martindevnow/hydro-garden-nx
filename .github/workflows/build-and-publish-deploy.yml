@@ -1,0 +1,49 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Check Affected Apps
+    runs-on: ubuntu-latest
+    outputs:
+      affected_apps: ${{ steps.check_affected.outputs.affected_apps }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install NX
+        run: yarn global add @nrwl/cli
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Check if Affected
+        id: check_affected
+        run: |
+          AFFECTED_APPS=$(nx affected:apps --base=main~1 --head=main --plain)
+          echo "::set-output name=affected_apps::$AFFECTED_APPS"
+          echo "Affected Applications:"
+          echo "$AFFECTED_APPS"
+
+  api_build_and_publish:
+    name: API - Build and Publish to Docker Hub
+    needs: check
+    if: ${{ contains(needs.check.outputs.affected_apps, 'api') }}
+    uses: martindevnow/hydro-garden-nx/.github/workflows/api-build-and-publish.yml@main
+    secrets:
+      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+  admin_build_and_deploy:
+    name: Device Admin - Build and Deploy to Firebase Hosting
+    needs: check
+    if: ${{ contains(needs.check.outputs.affected_apps, 'device-admin') }}
+    uses: martindevnow/hydro-garden-nx/.github/workflows/admin-build-and-deploy.yml@main
+    secrets:
+      FIREBASE_SERVICE_ACCOUNT_HYDRO_GARDEN_68DC5: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_HYDRO_GARDEN_68DC5 }}

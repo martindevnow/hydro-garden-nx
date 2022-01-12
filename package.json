@@ -11,8 +11,9 @@
     "run:api": "docker run -p 3334:3334 martindevnow/hydro-garden-api",
     "admin:start": "nx run device-admin:serve",
     "api:start": "nx run api:serve",
-    "isAffected:device-admin": "nx affected:apps --base=main~1 --head=main --plain --exclude=api",
-    "isAffected:device-admin2": "nx print-affected --base=main~1 --head=main --target=build --select=projects --exclude=api"
+    "isAffected:api": "nx affected:apps --base=main~2 --head=main --plain",
+    "isAffected:device-admin": "nx affected:apps --base=main~2 --head=main --plain --exclude=api",
+    "isAffected:device-admin2": "nx print-affected --base=main~2 --head=main --target=build --select=projects --exclude=api"
   },
   "private": true,
   "dependencies": {

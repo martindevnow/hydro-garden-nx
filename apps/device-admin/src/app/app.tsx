@@ -38,7 +38,7 @@ export function App() {
 
   return (
     <StyledApp>
-      <Header title="Rooms" />
+      <Header title="All Rooms" />
       {rooms.map((room) => (
         <button key={room.name}>{room.name}</button>
       ))}

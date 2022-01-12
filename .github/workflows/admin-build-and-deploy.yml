@@ -1,0 +1,29 @@
+name: 'Admin - Build and Deploy to Firebase'
+
+on:
+  workflow_call:
+    secrets:
+      FIREBASE_SERVICE_ACCOUNT_HYDRO_GARDEN_68DC5:
+        required: true
+
+jobs:
+  admin_build_and_deploy:
+    name: Device Admin - Build and Deploy to Firebase Hosting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: npx nx build device-admin
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HYDRO_GARDEN_68DC5 }}'
+          channelId: live
+          projectId: hydro-garden-68dc5

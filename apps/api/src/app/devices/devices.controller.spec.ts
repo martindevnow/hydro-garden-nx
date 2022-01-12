@@ -3,6 +3,7 @@ import {
   RoomDocument,
 } from '@hydro-garden-monorepo/utils/interfaces';
 import { Test, TestingModule } from '@nestjs/testing';
+import { RoomsService } from '../rooms/rooms.service';
 import { DevicesController } from './devices.controller';
 import { DevicesService } from './devices.service';
 
@@ -20,6 +21,7 @@ describe('DevicesController', () => {
             get: jest.fn().mockResolvedValue([]),
           },
         },
+        RoomsService,
         {
           provide: RoomDocument.collectionName,
           useValue: {
