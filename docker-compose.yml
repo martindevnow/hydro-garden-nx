@@ -11,7 +11,7 @@ services:
     environment:
       - SA_KEY=hydro-api-firebase-service-key.json
     volumes:
-      - ${PWD}/hydro-garden-68dc5-firebase-adminsdk-llaa5-91c6a50358.json:/app/hydro-api-firebase-service-key.json:ro
+      - ./hydro-garden-68dc5-firebase-adminsdk-llaa5-91c6a50358.json:/app/hydro-api-firebase-service-key.json:ro
   admin:
     build:
       context: .
