@@ -124,13 +124,13 @@
 			"response": []
 		},
 		{
-			"name": "API: Persist Copy",
+			"name": "API: /devices/temp - Put Temperature",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"temp\": \"20.00\"\r\n}",
+					"raw": "{\r\n    \"macAddress\": \"00:00:00:00\",\r\n    \"temp\": \"22.0\",\r\n    \"humid\": \"45.0\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -138,15 +138,48 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3334/garden/environment",
+					"raw": "http://localhost:3334/devices/temp",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3334",
 					"path": [
-						"garden",
-						"environment"
+						"devices",
+						"temp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API: /rooms/dummy/temp - Get Room Temperature",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3334/rooms/dummy/temp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"rooms",
+						"dummy",
+						"temp"
 					]
 				}
 			},
