@@ -21,6 +21,28 @@ export class DevicesService {
     return device;
   }
 
+  async createIfNotExists({
+    macAddress,
+    description,
+    roomId,
+  }): Promise<DeviceDocument> {
+    const docRef = this.devicesCollection.doc(macAddress);
+    const doc = await docRef.get();
+
+    if (doc.exists) {
+      return doc.data();
+    }
+
+    await docRef.set({
+      macAddress,
+      description,
+      roomId,
+    });
+    const deviceDoc = await docRef.get();
+    const device = deviceDoc.data();
+    return device;
+  }
+
   async findAll(): Promise<DeviceDocument[]> {
     const snapshot = await this.devicesCollection.get();
     const devices: DeviceDocument[] = [];
