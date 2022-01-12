@@ -1,4 +1,7 @@
-import { DeviceDocument } from '@hydro-garden-monorepo/utils/interfaces';
+import {
+  DeviceDocument,
+  RoomDocument,
+} from '@hydro-garden-monorepo/utils/interfaces';
 import { Test, TestingModule } from '@nestjs/testing';
 import { DevicesController } from './devices.controller';
 import { DevicesService } from './devices.service';
@@ -13,6 +16,12 @@ describe('DevicesController', () => {
         DevicesService,
         {
           provide: DeviceDocument.collectionName,
+          useValue: {
+            get: jest.fn().mockResolvedValue([]),
+          },
+        },
+        {
+          provide: RoomDocument.collectionName,
           useValue: {
             get: jest.fn().mockResolvedValue([]),
           },

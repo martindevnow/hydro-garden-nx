@@ -1,4 +1,4 @@
-export class CreateIfNotExistsDeviceDto {
+export class DeviceCreateIfNotExistsDto {
   macAddress!: string;
   description!: string;
   roomId?: string;
