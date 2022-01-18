@@ -25,7 +25,7 @@ export class DevicesController {
 
   @Post()
   attendance(@Body() createIfNotExists: DeviceCreateIfNotExistsDto) {
-    return this.devicesService.create({
+    return this.devicesService.createIfNotExists({
       macAddress: createIfNotExists.macAddress,
       description: createIfNotExists.description ?? '',
       roomId: createIfNotExists.roomId ?? '',
