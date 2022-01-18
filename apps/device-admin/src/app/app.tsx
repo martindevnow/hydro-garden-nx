@@ -5,6 +5,8 @@ import { RoomDocument } from '@hydro-garden-monorepo/utils/interfaces';
 import React from 'react';
 import { collection, getDocs } from '@firebase/firestore/lite';
 import { db } from '../firebase/firebase.config';
+import { Link, Route, Routes } from 'react-router-dom';
+import Room from '../views/room/room';
 
 const StyledApp = styled.div`
   // Your style here
@@ -26,22 +28,17 @@ export function App() {
     getRooms();
   }, []);
 
-  // React.useEffect(() => {
-  //   // Talk to API to get data
-  //   const getRooms = async () => {
-  //     const res = await fetch('http://localhost:3334/rooms');
-  //     const roomsList = await res.json();
-  //     setRooms(roomsList);
-  //   };
-  //   getRooms();
-  // }, []);
-
   return (
     <StyledApp>
       <Header title="All Rooms" />
       {rooms.map((room) => (
-        <button key={room.name}>{room.name}</button>
+        <Link key={room.name} to={`/room/${room.name}`}>
+          <button>{room.name}</button>
+        </Link>
       ))}
+      <Routes>
+        <Route path="/room/:roomId" element={<Room />} />
+      </Routes>
     </StyledApp>
   );
 }
