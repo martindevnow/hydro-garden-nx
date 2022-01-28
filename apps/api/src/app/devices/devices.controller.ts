@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { DevicesService } from './devices.service';
 import {
   DeviceCreateIfNotExistsDto,
@@ -36,6 +45,12 @@ export class DevicesController {
   async temperature(@Body() putTemperature: DevicePutTemperatureDto) {
     const device = await this.devicesService.read(putTemperature.macAddress);
     const { temp, humid } = putTemperature;
+    if (!device.roomId) {
+      throw new HttpException(
+        `Device has no 'roomId' set. Cannot log temperature. Set the 'roomId' of this device to complete this request.`,
+        HttpStatus.BAD_REQUEST
+      );
+    }
     return this.roomsService.putTemperature(device.roomId, { temp, humid });
   }
 }
