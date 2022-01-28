@@ -38,7 +38,7 @@ const Room = () => {
 
   return (
     <div>
-      <h1>{room?.name}</h1>
+      <h1>Room: {room?.name}</h1>
       <ResponsiveContainer width={'100%'} height={400}>
         <LineChart
           data={temperatures}
